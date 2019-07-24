@@ -11,7 +11,12 @@
 
         <div class="content">
 
-            <form id="add-cafe-form"></form>
+            <form id="add-women-enrollment-form">
+              <input type="text" name="firstName" placeholder="First Name">
+              <input type="text" name="height" placeholder="Height">
+              <input type="text" name="weight" placeholder="Weight">
+              <button>Add Data</button>
+            </form>
 
             <ul id="smart-women-list"></ul>
 
@@ -34,7 +39,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         db.settings({timestampsInSnapshots: true});
-        db.collection('')
+        // db.collection('')
       </script>
       <script src="app.js"></script>
     </body>
