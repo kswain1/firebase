@@ -1,0 +1,46 @@
+<html>
+    <head>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <h1>Women Heart Health</h1>
+
+        <div class="content">
+
+            <form id="add-women-enrollment-form">
+              <input type="text" name="firstName" placeholder="First Name">
+              <input type="text" name="height" placeholder="Height">
+              <input type="text" name="weight" placeholder="Weight">
+              <button>Add Data</button>
+            </form>
+
+            <ul id="smart-women-list"></ul>
+
+        </div>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+        // Your web app's Firebase configuration
+          var firebaseConfig = {
+          apiKey: "AIzaSyDH0dFx3PP5FFoc_Mud6y8Oqe6paepEH1A",
+          authDomain: "womenhealthdsu.firebaseapp.com",
+          databaseURL: "https://womenhealthdsu.firebaseio.com",
+          projectId: "womenhealthdsu",
+          storageBucket: "womenhealthdsu.appspot.com",
+          messagingSenderId: "64848300672",
+          appId: "1:64848300672:web:60f71ccffaad2e97"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        db.settings({timestampsInSnapshots: true});
+        // db.collection('')
+      </script>
+      <script src="app.js"></script>
+    </body>
+</html>
