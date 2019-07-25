@@ -34,25 +34,6 @@ function renderWomen(doc) {
 
 }
 
-//querying data
-// db.collection('enrollmentForm').where('weight', '>', 175).get().then((snapshot) => {
-//   snapshot.docs.forEach(doc =>{
-//     renderWomen(doc);
-//   })
-
-//querying data
- db.collection('enrollmentForm').where('weight', '>', 150).orderBy('weight').get().then((snapshot) => {
-   snapshot.docs.forEach(doc =>{
-     renderWomen(doc);
-   })
-
-  //getting data from enrollmentForm Collection
-  // db.collection('enrollmentForm').where('weight', '>', 175).get().then((snapshot) => {
-  //   snapshot.docs.forEach(doc =>{
-  //     renderWomen(doc);
-  //   })
-})
-
 //saving data to enrollmentForm
 form.addEventListener('submit', (womenSubmit) => {
   womenSubmit.preventDefault();
@@ -64,4 +45,18 @@ form.addEventListener('submit', (womenSubmit) => {
   form.name.value = "";
   form.height.value = "";
   form.weight.value = "";
+})
+
+db.collection('enrollmentForm').orderBy('weight').onSnapshot(snapshot => {
+  let changes = snapshot.docChanges();
+  changes.forEach(change => {
+    console.log(change.doc.data());
+    if (change.type == "added"){
+      renderWomen(change.doc);
+    } else if (change.type == "removed") {
+      let li = smartWomenList.querySelector('[data=' + change.doc.id + ']');
+      smartWomenList.removeChild(li);
+    }
+
+  });
 })
